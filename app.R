@@ -7,7 +7,7 @@
 ## App should be found on posit connect here:
 
 ## Must run these packages first
-install.packages(c("rsconnect", "renv", "dplyr", "tidyr", "tidyverse", "shiny", "shinydashboard", "gt", "here", "RODBC"))
+# install.packages(c("rsconnect", "renv", "dplyr", "tidyr", "tidyverse", "shiny", "shinydashboard", "gt", "here", "RODBC"))
 
 library(rsconnect)
 library(renv)
