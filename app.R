@@ -7,6 +7,7 @@
 ## App should be found on posit connect here:
 
 ## Must run these packages first
+install.packages(c("rsconnect", "renv", "dplyr", "tidyr", "tidyverse", "shiny", "shinydashboard", "gt", "here", "RODBC"))
 
 library(rsconnect)
 library(renv)
@@ -22,7 +23,7 @@ library(RODBC)
 
 
 ## These next codes are to make the dashboard shareable. Every single time the code is changed, these two codes need to be re-run before pushing to ADO
-# renv::snapshot()  #has to do with the package versions
+# 2 #has to do with the package versions
 # rsconnect::writeManifest()  #needed to run the dashboard on R-connect
 
 ## Central code that runs everything in order

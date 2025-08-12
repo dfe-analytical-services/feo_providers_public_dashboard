@@ -17,7 +17,7 @@ shhh(library(bslib))
 shhh(library(rstudioapi))
 
 # Custom packages
-shhh(library(dfeR))
+shhh(library(dfeR)) ## if this doesn't exist for you, try run this instead: renv::install("dfe-analytical-services/dfeR")
 shhh(library(dfeshiny)) ## if this doesn't exist for you, try run this instead: renv::install("dfe-analytical-services/dfeshiny")
 shhh(library(shinyGovstyle))
 
