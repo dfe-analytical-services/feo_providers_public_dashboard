@@ -6,7 +6,7 @@ Headline_stats_panel <- function() {
         column(
           width = 12,
           id = "main_col",
-          h1("Outcomes per specific provider"),
+          h1("Outcomes by specific provider"),
         ),
         # Expandable section --------------------------------------------------
         column(
@@ -232,7 +232,7 @@ Headline_stats_panel <- function() {
             ), # closes specific tabPanel
             # 03 tab --------------------------------------------------
             tabPanel(
-              "Community Learning Status",
+              "Community Learning",
               fluidRow(
                 br(),
                 column(
