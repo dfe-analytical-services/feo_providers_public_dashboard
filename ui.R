@@ -23,14 +23,14 @@
 ui <- function(input, output, session) {
   fluidPage(
     # Set application metadata ------------------------------------------------
-    tags$head(HTML("<title>Department for Education (DfE) Further Education Outcomes provider data dashboard</title>")),
+    tags$head(HTML(paste0("<title>", site_title, "</title>"))),
     tags$head(tags$link(rel = "shortcut icon", href = "dfefavicon.png")),
     use_shiny_title(),
     tags$html(lang = "en"),
     # Add meta description for search engines
     meta() %>%
       meta_general(
-        application_name = "Department for Education (DfE) Further Education Outcomes provider data",
+        application_name = site_title,
         description = "Department for Education (DfE) Further Education Outcomes provider data",
         robots = "index,follow",
         generator = "R-Shiny",
@@ -55,7 +55,7 @@ ui <- function(input, output, session) {
     # Setting up cookie consent based on a cookie recording the consent:
     dfeshiny::dfe_cookies_script(),
     dfeshiny::cookies_banner_ui(
-      name = "Department for Education (DfE) Further Education Outcomes provider data"
+      name = "Further education outcomes provider tool"
     ),
 
     # Skip_to_main -------------------------------------------------------------
@@ -75,7 +75,7 @@ ui <- function(input, output, session) {
 
     # Header ------------------------------------------------------------------
     dfeshiny::header(
-      header = "Department for Education (DfE) Further Education Outcomes provider data"
+      header = site_title
     ),
 
     # Beta banner -------------------------------------------------------------
@@ -84,12 +84,7 @@ ui <- function(input, output, session) {
       "beta",
       paste0(
         "This Dashboard is in beta phase and we are still reviewing performance
-        and reliability. ",
-        "In case of slowdown or connection issues due to high demand, we have
-        produced two instances of this site which can be accessed at the
-        following links: ",
-        "<a href=", site_primary, " id='link_site_1'>Site 1</a> and ",
-        "<a href=", site_overflow, " id='link_site_2'>Site 2</a>."
+        and reliability."
       )
     ),
 

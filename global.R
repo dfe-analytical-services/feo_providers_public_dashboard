@@ -48,27 +48,34 @@ if (FALSE) {
   shhh(library(testthat))
 }
 
+
 # Source scripts --------------------------------------------------------------
 
 # Source any scripts here. Scripts may be needed to process data before it gets
 # to the server file or to hold custom functions to keep the main files shorter
 #
 # It's best to do this here instead of the server file, to improve performance.
-
+lapply(list.files("R/", pattern = "*.R", full.names = TRUE), source)
 
 # Source all files in the ui_panels folder
 lapply(list.files("R/ui_panels/", full.names = TRUE), source)
 
 # Set global variables --------------------------------------------------------
 
-site_title <- "Department for Education (DfE) Further Education Outcomes Provider data" # name of app
+# Read in data
+PRV01_data <- readRDS("data/PRV01_data_rds.rds") |> clean_prv01()
+PRV02_data <- readRDS("data/PRV02_data_rds.rds") |> clean_prv02()
+PRV03_data <- readRDS("data/PRV03_data_rds.rds") |> clean_prv03()
+PRV04_data <- readRDS("data/PRV04_data_rds.rds") |> clean_prv04()
+
+
+site_title <- "Further education outcomes provider tool" # name of app
 parent_pub_name <- "Further Education Outcomes" # name of source publication
 parent_publication <- # link to source publication
   "https://explore-education-statistics.service.gov.uk/find-statistics/further-education-outcomes/2021-22"
 
 # Set the URLs that the site will be published to
-site_primary <- "https://department-for-education.shinyapps.io/dfe-shiny-template/"
-site_overflow <- "https://department-for-education.shinyapps.io/dfe-shiny-template-overflow/"
+site_primary <- "https://department-for-education.shinyapps.io/further-education-provider-outcomes/"
 
 # This function is needed for the Shiny App
 expandable <- function(input_id, label, contents) {
@@ -88,10 +95,10 @@ expandable <- function(input_id, label, contents) {
 # Combine URLs into list for disconnect function
 # We can add further mirrors where necessary. Each one can generally handle
 # about 2,500 users simultaneously
-sites_list <- c(site_primary, site_overflow)
+sites_list <- c(site_primary)
 
 # Set the key for Google Analytics tracking
-google_analytics_key <- "Z967JJVQQX"
+google_analytics_key <- "W7903TYHRV"
 
 # End of global variables -----------------------------------------------------
 

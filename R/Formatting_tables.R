@@ -252,8 +252,6 @@ Formatting_04_table <- function(table_input) {
 }
 
 
-
-
 ## This formats the 04 for TOTAL provision table
 Formatting_04_table_total <- function(table_input) {
   formatted_table <- table_input %>%

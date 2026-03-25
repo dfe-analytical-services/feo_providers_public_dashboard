@@ -16,8 +16,8 @@ user_guide_panel <- function() {
           p(
             "The link to the most recent publication is here: ",
             tags$a(
-              href = "https://explore-education-statistics.service.gov.uk/find-statistics/further-education-outcomes/2021-22",
-              "Further Education Outcomes 2021/22",
+              href = "https://explore-education-statistics.service.gov.uk/find-statistics/further-education-outcomes/2022-23",
+              "Further Education Outcomes 2022/23",
               target = "_blank"
             ),
             "."
@@ -36,8 +36,8 @@ user_guide_panel <- function() {
           p("Further education outcomes (FEO) shows the percentage of further education
             learners going to or remaining in an education and/or employment destination
             in the academic year after achieving their learning aim. The most recent data
-            reports on learners who achieved their aim in the 2021/22 academic year, and
-            identifies their education and/or employment destinations the following year (2022/23). "),
+            reports on learners who achieved their aim in the 2022/23 academic year, and
+            identifies their education and/or employment destinations the following year (2023/24). "),
           p("This publication reports outcomes by various learner demographics and type
             and level of learning. Where a learner achieves more than one aim at the same
             provider within an academic year, the outcomes for the learner are reported
@@ -72,7 +72,8 @@ user_guide_panel <- function() {
             They do not seek to control for differences in learner characteristics
             that may influence outcomes over time or across different learner populations."),
           h3("Rounding and suppression"),
-          p("Full details on rounding and suppression are available in the accompanying methodology document."),
+          p("Full details on rounding and suppression are available in the accompanying methodology documentation found
+            on the publication website."),
           p("Any percentage point (ppt) changes reported that appear to mismatch the percentages provided
             in the charts and tables are due to rounding conventions. The use of rounding and
             suppression may also mean that some charts do not appear to add up to 100%.")

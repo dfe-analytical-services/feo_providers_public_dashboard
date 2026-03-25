@@ -105,7 +105,6 @@ server <- function(input, output, session) {
   })
 
 
-
   # Create a gt table for 02 data
   output$table_02 <- render_gt(if (input$selectLevel02 == "Total") {
     filtered_data <- PRV02_data %>%
@@ -268,8 +267,6 @@ server <- function(input, output, session) {
       }
     }
   })
-
-
 
 
   # Link in the user guide panel back to the main panel -----------------------
