@@ -129,12 +129,7 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  br(),
-                  column(
-                    width = 12,
-                    gov_text("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
-                    br(),
-                  )
+                  gov_text("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
                 ),
                 column(
                   width = 12,
@@ -219,12 +214,7 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  br(),
-                  column(
-                    width = 12,
-                    paste("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
-                    br(),
-                  )
+                  gov_text("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
                 ),
                 column(
                   width = 12,

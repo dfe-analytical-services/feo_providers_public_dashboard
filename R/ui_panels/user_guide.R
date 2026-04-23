@@ -15,20 +15,18 @@ user_guide_panel <- function() {
           gov_text("The data presented in this dashboard is only a subset of the full dataset provided in the publication."),
           gov_text(
             "The link to the most recent publication is here: ",
-            tags$a(
+            external_link(
               href = "https://explore-education-statistics.service.gov.uk/find-statistics/further-education-outcomes/2022-23",
-              "Further Education Outcomes 2022/23",
-              target = "_blank"
+              "Further Education Outcomes 2022/23"
             ),
             "."
           ),
           heading_text("Guidance sources", level = 2, size = "m"),
           gov_text(
             "Full guidance is attached in the main publication page, with the methodology linked here: ",
-            tags$a(
+            external_link(
               href = "https://explore-education-statistics.service.gov.uk/methodology/further-education-outcomes",
-              "Further Education Outcomes methodology",
-              target = "_blank"
+              "Further Education Outcomes methodology"
             ),
             "."
           ),
@@ -47,19 +45,19 @@ user_guide_panel <- function() {
             the Full Level 3 aim. Full Level 2 and Full Level 3 are counted as higher than
             other Level 2 and Level 3 aims respectively, and apprenticeship aims are
             prioritised over education and training aims."),
-          h3("What data is used?"),
-          tagList(
-            gov_text("The Longitudinal Education Outcomes (LEO) dataset is used, which looks at how
+          heading_text("What data is used?", level = 3, size = "s"),
+          gov_text("The Longitudinal Education Outcomes (LEO) dataset is used, which looks at how
     learners move through education and into the labour market by bringing together:"),
-            tags$ul(
-              tags$li("Schools, further and higher education information from the Department for Education (DfE)"),
-              tags$li("Employment information from HM Revenue and Customs (HMRC)"),
-              tags$li("Benefit histories from the Department of Work and Pensions (DWP)")
-            ),
-            gov_text("All learner counts reported here relate to those learners for whom a match was found in the LEO data,
-    therefore the counts will not match headline achievements in the FE & Skills National Statistics release.")
+          gov_list(
+            c(
+              "Schools, further and higher education information from the Department for Education (DfE)",
+              "Employment information from HM Revenue and Customs (HMRC)",
+              "Benefit histories from the Department of Work and Pensions (DWP)"
+            )
           ),
-          h3("What further data is available?"),
+          gov_text("All learner counts reported here relate to those learners for whom a match was found in the LEO data,
+    therefore the counts will not match headline achievements in the FE & Skills National Statistics release."),
+          heading_text("What further data is available?", level = 3, size = "s"),
           gov_text("In addition to the headline measures presented in this publication, further
             data is available on detailed destination, earnings and progression measures
             broken down by geographic areas, provider, learner demographics, type/level
@@ -71,7 +69,7 @@ user_guide_panel <- function() {
           gov_text("The outcomes reported in the commentary are presented as raw figures.
             They do not seek to control for differences in learner characteristics
             that may influence outcomes over time or across different learner populations."),
-          h3("Rounding and suppression"),
+          heading_text("Rounding and suppression", level = 3, size = "s"),
           gov_text("Full details on rounding and suppression are available in the accompanying methodology documentation found
             on the publication website."),
           gov_text("Any percentage point (ppt) changes reported that appear to mismatch the percentages provided
