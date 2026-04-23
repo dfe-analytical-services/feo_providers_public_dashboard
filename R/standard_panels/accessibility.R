@@ -12,14 +12,14 @@ accessibility_panel <- function() {
     dfeshiny::a11y_panel(
       dashboard_title = site_title,
       dashboard_url = site_primary,
-      date_tested = "12th June 2025",
-      date_prepared = "12th June 2025",
-      date_reviewed = "12th June 2025",
-      issues_contact = "explore.statistics@education.gov.uk",
-      non_accessible_components = c(
-        "List non-accessible components here"
-      ),
+      date_tested = "23rd April 2026",
+      date_prepared = "23rd April 2026",
+      date_reviewed = "23rd April 2026",
+      issues_contact = "fe.outcomesdata@education.gov.uk",
       specific_issues = c(
+        "Elements with an ARIA [role] that require children to contain a specific [role] are missing some or all of those required children.",
+        "List items (<li>) are not contained within <ul>, <ol> or <menu> parent elements.",
+        "Cells in a <table> element that use the [headers] attribute refer to an element id not found within the same table.",
         "Some combinations of filters are not existent in the underlying data.
                               Therefore, when using this dashboard you may find an error message that
                               either indicates there are simply no learners that meet your specific criteria
