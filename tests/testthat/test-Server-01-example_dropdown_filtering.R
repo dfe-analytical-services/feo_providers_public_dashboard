@@ -34,7 +34,7 @@ shiny::testServer(expr = {
   # expect_identical(
   #   # Reactive data set
   #   reactive_rev_bal(),
-  # 
+  #
   #   # Example of what we're expecting made from test data
   #   test_data %>%
   #     filter(

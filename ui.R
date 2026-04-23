@@ -65,14 +65,7 @@ ui <- function(input, output, session) {
 
     # Google analytics --------------------------------------------------------
     tags$head(includeHTML(("google-analytics.html"))),
-    tags$head(
-      tags$link(
-        rel = "stylesheet",
-        type = "text/css",
-        href = "dfe_shiny_gov_style.css"
-      )
-    ),
-
+    shinyGovstyle::full_width_overrides(),
     # Header ------------------------------------------------------------------
     dfeshiny::header(
       header = site_title

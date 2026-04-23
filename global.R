@@ -46,6 +46,8 @@ shhh(library(shinyalert))
 if (FALSE) {
   shhh(library(shinytest2))
   shhh(library(testthat))
+  shhh(library(rsconnect))
+  shhh(library(shinya11y))
 }
 
 
