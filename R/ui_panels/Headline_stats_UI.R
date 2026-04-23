@@ -6,7 +6,7 @@ Headline_stats_panel <- function() {
         column(
           width = 12,
           id = "main_col",
-          h1("Outcomes by specific provider"),
+          heading_text("Outcomes by specific provider", level = 1, size = "l"),
         ),
         # Expandable section --------------------------------------------------
         column(
@@ -58,7 +58,7 @@ Headline_stats_panel <- function() {
                 br(),
                 column(
                   width = 12,
-                  h2("Sector Subject Area data"),
+                  heading_text("Sector Subject Area data", level = 2, size = "m"),
                   fluidRow(
                     column(
                       width = 12,
@@ -119,7 +119,7 @@ Headline_stats_panel <- function() {
                 br(),
                 column(
                   width = 12,
-                  h2("Demographics table data"),
+                  heading_text("Demographics table data", level = 2, size = "m"),
                   fluidRow(
                     column(
                       width = 12,
@@ -209,7 +209,7 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  h2("Community Learners data"),
+                  heading_text("Community Learners data", level = 2, size = "m"),
                   fluidRow(
                     column(
                       width = 12,
