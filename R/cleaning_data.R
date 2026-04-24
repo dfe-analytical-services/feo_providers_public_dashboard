@@ -7,7 +7,7 @@ clean_prv01 <- function(PRV01_data) {
     filter(
       country_name == "England",
       provider_type == "Total"
-      ##cohort_selection == "Total"
+      ## cohort_selection == "Total"
     ) %>%
     select(-time_identifier, -geographic_level, -country_code, -country_name) %>%
     mutate(time_period = paste0(substring(time_period, 1, 4), "/", substring(time_period, 5, 6))) %>%

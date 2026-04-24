@@ -46,6 +46,8 @@ shhh(library(shinyalert))
 if (FALSE) {
   shhh(library(shinytest2))
   shhh(library(testthat))
+  shhh(library(rsconnect))
+  shhh(library(shinya11y))
 }
 
 
@@ -59,6 +61,9 @@ lapply(list.files("R/", pattern = "*.R", full.names = TRUE), source)
 
 # Source all files in the ui_panels folder
 lapply(list.files("R/ui_panels/", full.names = TRUE), source)
+
+# Source all files in the ui_panels folder
+lapply(list.files("R/standard_panels/", full.names = TRUE), source)
 
 # Set global variables --------------------------------------------------------
 

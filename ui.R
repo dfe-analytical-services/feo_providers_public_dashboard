@@ -19,9 +19,8 @@
 #
 # -----------------------------------------------------------------------------
 
-
 ui <- function(input, output, session) {
-  fluidPage(
+  bslib::page_fluid(
     # Set application metadata ------------------------------------------------
     tags$head(HTML(paste0("<title>", site_title, "</title>"))),
     tags$head(tags$link(rel = "shortcut icon", href = "dfefavicon.png")),
@@ -61,18 +60,11 @@ ui <- function(input, output, session) {
     # Skip_to_main -------------------------------------------------------------
     # Add a 'Skip to main content' link for keyboard users to bypass navigation.
     # It stays hidden unless focussed via tabbing.
-    # shinyGovstyle::skip_to_main(),
+    shinyGovstyle::skip_to_main(),
 
     # Google analytics --------------------------------------------------------
     tags$head(includeHTML(("google-analytics.html"))),
-    tags$head(
-      tags$link(
-        rel = "stylesheet",
-        type = "text/css",
-        href = "dfe_shiny_gov_style.css"
-      )
-    ),
-
+    shinyGovstyle::full_width_overrides(),
     # Header ------------------------------------------------------------------
     dfeshiny::header(
       header = site_title
@@ -87,52 +79,49 @@ ui <- function(input, output, session) {
         and reliability."
       )
     ),
-
-    # Nav panels --------------------------------------------------------------
-    shiny::navlistPanel(
-      "",
-      id = "navlistPanel",
-      widths = c(2, 8),
-      well = FALSE,
-      # Content for these panels is defined in the R/ui_panels/ folder
-      Headline_stats_panel(),
-      user_guide_panel(),
-      shiny::tabPanel(
-        value = "a11y_panel",
-        "Accessibility",
-        dfeshiny::a11y_panel(
-          dashboard_title = site_title,
-          dashboard_url = site_primary,
-          date_tested = "12th June 2025",
-          date_prepared = "12th June 2025",
-          date_reviewed = "12th June 2025",
-          issues_contact = "explore.statistics@education.gov.uk",
-          non_accessible_components = c("List non-accessible components here"),
-          specific_issues = c("Some combinations of filters are not existent in the underlying data.
-                              Therefore, when using this dashboard you may find an error message that
-                              either indicates there are simply no learners that meet your specific criteria
-                              or the combination of filters you've chosen does not exist in the current data.
-                              Please change the filters to look at existing data held in the current publication.")
-        )
-      ),
-      shiny::tabPanel(
-        value = "cookies_panel_ui",
-        "Cookies",
-        cookies_panel_ui(google_analytics_key = google_analytics_key),
-        br()
-      ),
-      shiny::tabPanel(
-        value = "support_panel_ui",
-        "Support and feedback",
-        support_panel(
-          team_email = " FE.OUTCOMESDATA@education.gov.uk",
-          repo_name = "https://github.com/dfe-analytical-services/shiny-template",
-          form_url = "https://forms.office.com"
+    gov_main_layout(
+      bslib::navset_hidden(
+        id = "pages",
+        nav_panel(
+          "dashboard",
+          ## Main dashboard ---------------------------------------------------
+          # Nav panels --------------------------------------------------------------
+          shiny::navlistPanel(
+            "",
+            id = "navlistPanel",
+            widths = c(2, 8),
+            well = FALSE,
+            # Content for these panels is defined in the R/ui_panels/ folder
+            Headline_stats_panel(),
+            user_guide_panel()
+          )
+        ),
+        nav_panel(
+          value = "accessibility_statement",
+          "Accessibility",
+          accessibility_panel()
+        ),
+        nav_panel(
+          value = "cookies_statement",
+          "Cookies",
+          cookies_panel()
+        ),
+        nav_panel(
+          value = "support",
+          "Support and feedback",
+          support_panel()
         )
       )
     ),
 
     # Footer ------------------------------------------------------------------
-    footer(full = TRUE)
+    footer(
+      full = TRUE,
+      links = c(
+        "Accessibility statement",
+        "Cookies statement",
+        "Support"
+      )
+    )
   )
 }

@@ -6,7 +6,7 @@ Headline_stats_panel <- function() {
         column(
           width = 12,
           id = "main_col",
-          h1("Outcomes by specific provider"),
+          heading_text("Outcomes by specific provider", level = 1, size = "l"),
         ),
         # Expandable section --------------------------------------------------
         column(
@@ -58,7 +58,7 @@ Headline_stats_panel <- function() {
                 br(),
                 column(
                   width = 12,
-                  h2("Sector Subject Area data"),
+                  heading_text("Sector Subject Area data", level = 2, size = "m"),
                   fluidRow(
                     column(
                       width = 12,
@@ -68,34 +68,17 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  br(),
-                  column(
-                    width = 12,
-                    paste("Note: Education and Training relates to classroom based provision that is not
+                  gov_text("Note: Education and Training relates to classroom based provision that is not
                             either community/tailored learning, an apprenticeship, or a traineeship."),
-                    br(), br(),
-                    paste("All suppressed numbers are represented by 'c' where sample sizes are too low."),
-                    br(),
-                  )
+                  gov_text("All suppressed numbers are represented by 'c' where sample sizes are too low."),
                 ),
                 column(
                   width = 12,
-                  br(),
-                  expandable(
-                    input_id = "download04", label = "Download this data",
-                    contents =
-                    # Download button -------------------------------------------
-                      column(
-                        width = 12,
-                        paste("Download the underlying data for this dashboard:"),
-                        br(),
-                        downloadButton(
-                          outputId = "download_data_04",
-                          label = "Download data",
-                          icon = shiny::icon("download"),
-                          class = "downloadButton"
-                        )
-                      )
+                  # Download button -------------------------------------------
+                  download_button(
+                    outputId = "download_data_04",
+                    button_label = "Download underlying data",
+                    file_type = "CSV"
                   )
                 )
               ) # closes fluidRow
@@ -136,7 +119,7 @@ Headline_stats_panel <- function() {
                 br(),
                 column(
                   width = 12,
-                  h2("Demographics table data"),
+                  heading_text("Demographics table data", level = 2, size = "m"),
                   fluidRow(
                     column(
                       width = 12,
@@ -146,31 +129,14 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  br(),
-                  column(
-                    width = 12,
-                    paste("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
-                    br(),
-                  )
+                  gov_text("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
                 ),
                 column(
                   width = 12,
-                  br(),
-                  expandable(
-                    input_id = "download02", label = "Download this data",
-                    contents =
-                    # Download button -------------------------------------------
-                      column(
-                        width = 12,
-                        paste("Download the underlying data for this dashboard:"),
-                        br(),
-                        downloadButton(
-                          outputId = "download_data_02",
-                          label = "Download data",
-                          icon = shiny::icon("download"),
-                          class = "downloadButton"
-                        )
-                      )
+                  download_button(
+                    outputId = "download_data_02",
+                    button_label = "Download underlying data",
+                    file_type = "CSV"
                   )
                 )
               ) # closes fluidRow
@@ -191,7 +157,7 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  h2("Benefit learners table data"),
+                  heading_text("Benefit learners table data", level = 2, size = "m"),
                   fluidRow(
                     column(
                       width = 12,
@@ -201,31 +167,14 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  br(),
-                  column(
-                    width = 12,
-                    paste("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
-                    br(),
-                  )
+                  gov_text("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
                 ),
                 column(
                   width = 12,
-                  br(),
-                  expandable(
-                    input_id = "download01", label = "Download this data",
-                    contents =
-                    # Download button -------------------------------------------
-                      column(
-                        width = 12,
-                        paste("Download the underlying data for this dashboard:"),
-                        br(),
-                        downloadButton(
-                          outputId = "download_data_01",
-                          label = "Download data",
-                          icon = shiny::icon("download"),
-                          class = "downloadButton"
-                        )
-                      )
+                  download_button(
+                    outputId = "download_data_01",
+                    button_label = "Download underlying data",
+                    file_type = "CSV"
                   )
                 )
               ) # closes fluidRow
@@ -255,7 +204,7 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  h2("Community Learners data"),
+                  heading_text("Community Learners data", level = 2, size = "m"),
                   fluidRow(
                     column(
                       width = 12,
@@ -265,31 +214,14 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  br(),
-                  column(
-                    width = 12,
-                    paste("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
-                    br(),
-                  )
+                  gov_text("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
                 ),
                 column(
                   width = 12,
-                  br(),
-                  expandable(
-                    input_id = "download03", label = "Download this data",
-                    contents =
-                    # Download button -------------------------------------------
-                      column(
-                        width = 12,
-                        paste("Download the underlying data for this dashboard:"),
-                        br(),
-                        downloadButton(
-                          outputId = "download_data_03",
-                          label = "Download data",
-                          icon = shiny::icon("download"),
-                          class = "downloadButton"
-                        )
-                      )
+                  download_button(
+                    outputId = "download_data_03",
+                    button_label = "Download underlying data",
+                    file_type = "CSV"
                   )
                 )
               ) # closes fluidRow

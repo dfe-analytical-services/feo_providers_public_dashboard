@@ -24,17 +24,6 @@ server <- function(input, output, session) {
   # or plotly chart) using the list below, but it will need updating to match
   # any entries in your own dashboard's bookmarking url that you don't want
   # including.
-  setBookmarkExclude(c(
-    "cookies", "link_to_app_content_tab",
-    "tabBenchmark_rows_current", "tabBenchmark_rows_all",
-    "tabBenchmark_columns_selected", "tabBenchmark_cell_clicked",
-    "tabBenchmark_cells_selected", "tabBenchmark_search",
-    "tabBenchmark_rows_selected", "tabBenchmark_row_last_clicked",
-    "tabBenchmark_state",
-    "plotly_relayout-A",
-    "plotly_click-A", "plotly_hover-A", "plotly_afterplot-A",
-    ".clientValue-default-plotlyCrosstalkOpts"
-  ))
 
   observe({
     # Trigger this observer every time an input changes
@@ -46,12 +35,46 @@ server <- function(input, output, session) {
     updateQueryString(url)
   })
 
+  # Dynamically control which inputs are included in the URL bookmark.
+  # Nested tabsets are only included when relevant to the active navlist panel
+  observe({
+    bookmark_list <- c("pages", "navlistPanel")
+    if (input$pages == "dashboard") {
+      if (input$navlistPanel == "Headline statistics") {
+        bookmark_list <- c(bookmark_list, "tabsetpanels", "selectUKPRN")
+        if (input$tabsetpanels == "Sector Subject Area") {
+          bookmark_list <- c(bookmark_list, "selectSSA1", "selectLevel04")
+        } else if (input$tabsetpanels == "Demographics") {
+          bookmark_list <- c(
+            bookmark_list,
+            "selectAgeGroup02",
+            "selectLevel02",
+            "selectLLDD"
+          )
+        } else if (input$tabsetpanels == "Benefit Status") {
+          bookmark_list <- c(bookmark_list, "selectProvision01")
+        } else if (input$tabsetpanels == "Community Learning") {
+          bookmark_list <- c(
+            bookmark_list,
+            "selectProvision03",
+            "selectAgeGroup03"
+          )
+        }
+      }
+    }
+    set_bookmark_include(
+      input,
+      bookmark_list
+    )
+  })
+
   observe({
     if (input$navlistPanel == "Headline statistics") {
       change_window_title(
         session,
         paste0(
-          site_title, " - ",
+          site_title,
+          " - ",
           input$selectUKPRN
         )
       )
@@ -59,7 +82,8 @@ server <- function(input, output, session) {
       change_window_title(
         session,
         paste0(
-          site_title, " - ",
+          site_title,
+          " - ",
           input$navlistPanel
         )
       )
@@ -78,7 +102,6 @@ server <- function(input, output, session) {
     google_analytics_key = google_analytics_key
   )
 
-
   output$table_01 <- render_gt({
     # Filter your data
     filtered_data <- PRV01_data %>%
@@ -87,8 +110,14 @@ server <- function(input, output, session) {
         provision == input$selectProvision01
       ) %>%
       select(
-        time_period, provider_name, benefit_learner, number_of_matched_learners,
-        spd_percent, emp_percent, learn_percent, no_dest_percent
+        time_period,
+        provider_name,
+        benefit_learner,
+        number_of_matched_learners,
+        spd_percent,
+        emp_percent,
+        learn_percent,
+        no_dest_percent
       ) %>%
       arrange(time_period, benefit_learner) %>%
       group_by(provider_name, time_period)
@@ -96,7 +125,9 @@ server <- function(input, output, session) {
     # Check if there's no data
     if (nrow(filtered_data) == 0) {
       # Create a dummy gt table with a nice message
-      gt(data.frame(Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters.")) %>%
+      gt(data.frame(
+        Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
+      )) %>%
         tab_options(table.width = pct(100)) # optional styling
     } else {
       # Format normally if there is data
@@ -104,55 +135,78 @@ server <- function(input, output, session) {
     }
   })
 
-
   # Create a gt table for 02 data
-  output$table_02 <- render_gt(if (input$selectLevel02 == "Total") {
-    filtered_data <- PRV02_data %>%
-      filter(
-        provider_name == input$selectUKPRN,
-        age_group == input$selectAgeGroup02,
-        level_of_learning == input$selectLevel02,
-        level_of_learning_group == "Total", ## For when user chooses level=Total then set this column also to Total, in order to avoid duplicates in output table
-        provision == "Total", ## For when user chooses level=Total then set this column also to Total, in order to avoid duplicates in output table
-        learning_difficulties == input$selectLLDD
-      ) %>%
-      select(time_period, provider_name, sex, number_of_matched_learners, spd_percent, emp_percent, learn_percent, no_dest_percent) %>%
-      arrange(time_period, sex) %>%
-      group_by(provider_name, time_period)
+  output$table_02 <- render_gt(
+    if (input$selectLevel02 == "Total") {
+      filtered_data <- PRV02_data %>%
+        filter(
+          provider_name == input$selectUKPRN,
+          age_group == input$selectAgeGroup02,
+          level_of_learning == input$selectLevel02,
+          level_of_learning_group == "Total", ## For when user chooses level=Total then set this column also to Total, in order to avoid duplicates in output table
+          provision == "Total", ## For when user chooses level=Total then set this column also to Total, in order to avoid duplicates in output table
+          learning_difficulties == input$selectLLDD
+        ) %>%
+        select(
+          time_period,
+          provider_name,
+          sex,
+          number_of_matched_learners,
+          spd_percent,
+          emp_percent,
+          learn_percent,
+          no_dest_percent
+        ) %>%
+        arrange(time_period, sex) %>%
+        group_by(provider_name, time_period)
 
-    # Check if there's no data
-    if (nrow(filtered_data) == 0) {
-      # Create a dummy gt table with a nice message
-      gt(data.frame(Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters.")) %>%
-        tab_options(table.width = pct(100)) # optional styling
+      # Check if there's no data
+      if (nrow(filtered_data) == 0) {
+        # Create a dummy gt table with a nice message
+        gt(data.frame(
+          Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
+        )) %>%
+          tab_options(table.width = pct(100)) # optional styling
+      } else {
+        # Format normally if there is data
+        Formatting_02_table(filtered_data)
+      }
     } else {
-      # Format normally if there is data
-      Formatting_02_table(filtered_data)
+      ## This is if the SelectLevel02 != Total
+
+      filtered_data <- PRV02_data %>%
+        filter(
+          provider_name == input$selectUKPRN,
+          age_group == input$selectAgeGroup02,
+          level_of_learning == input$selectLevel02,
+          learning_difficulties == input$selectLLDD
+        ) %>%
+        select(
+          time_period,
+          provider_name,
+          sex,
+          number_of_matched_learners,
+          spd_percent,
+          emp_percent,
+          learn_percent,
+          no_dest_percent
+        ) %>%
+        arrange(time_period, sex) %>%
+        group_by(provider_name, time_period)
+
+      # Check if there's no data
+      if (nrow(filtered_data) == 0) {
+        # Create a dummy gt table with a nice message
+        gt(data.frame(
+          Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
+        )) %>%
+          tab_options(table.width = pct(100)) # optional styling
+      } else {
+        # Format normally if there is data
+        Formatting_02_table(filtered_data)
+      }
     }
-  } else { ## This is if the SelectLevel02 != Total
-
-    filtered_data <- PRV02_data %>%
-      filter(
-        provider_name == input$selectUKPRN,
-        age_group == input$selectAgeGroup02,
-        level_of_learning == input$selectLevel02,
-        learning_difficulties == input$selectLLDD
-      ) %>%
-      select(time_period, provider_name, sex, number_of_matched_learners, spd_percent, emp_percent, learn_percent, no_dest_percent) %>%
-      arrange(time_period, sex) %>%
-      group_by(provider_name, time_period)
-
-    # Check if there's no data
-    if (nrow(filtered_data) == 0) {
-      # Create a dummy gt table with a nice message
-      gt(data.frame(Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters.")) %>%
-        tab_options(table.width = pct(100)) # optional styling
-    } else {
-      # Format normally if there is data
-      Formatting_02_table(filtered_data)
-    }
-  })
-
+  )
 
   # Create a gt table for 03 data
   output$table_03 <- render_gt({
@@ -163,24 +217,30 @@ server <- function(input, output, session) {
         age_group == input$selectAgeGroup03
       ) %>%
       select(
-        time_period, provider_name, benefit_learner, number_of_matched_learners,
-        spd_percent, emp_percent, learn_percent, no_dest_percent
+        time_period,
+        provider_name,
+        benefit_learner,
+        number_of_matched_learners,
+        spd_percent,
+        emp_percent,
+        learn_percent,
+        no_dest_percent
       ) %>%
       arrange(time_period, benefit_learner) %>%
       group_by(provider_name, time_period)
 
-
     # Check if there's no data
     if (nrow(filtered_data) == 0) {
       # Create a dummy gt table with a nice message
-      gt(data.frame(Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters.")) %>%
+      gt(data.frame(
+        Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
+      )) %>%
         tab_options(table.width = pct(100)) # optional styling
     } else {
       # Format normally if there is data
       Formatting_03_table(filtered_data)
     }
   })
-
 
   # # Create a gt table for 02 data
   # output$table_02 <- render_gt( if(input$selectAgeGroup == "Total"){    ## Do extra filter on the PRV02 data for when Total is selected for the AgeGroup
@@ -226,25 +286,38 @@ server <- function(input, output, session) {
   output$table_04 <- render_gt({
     if (input$selectLevel04 == "Total") {
       filtered_data <- PRV04_data %>%
-        filter( ## Use the TOTAL version of this formatting function
+        filter(
+          ## Use the TOTAL version of this formatting function
           provider_name == input$selectUKPRN,
           ssa_tier_1 == input$selectSSA1,
           level_of_learning == input$selectLevel04
         ) %>%
-        select(time_period, provider_name, provision, number_of_matched_learners, spd_percent, emp_percent, learn_percent, no_dest_percent) %>%
+        select(
+          time_period,
+          provider_name,
+          provision,
+          number_of_matched_learners,
+          spd_percent,
+          emp_percent,
+          learn_percent,
+          no_dest_percent
+        ) %>%
         arrange(time_period, provision) %>%
         group_by(provider_name, time_period)
 
       # Check if there's no data
       if (nrow(filtered_data) == 0) {
         # Create a dummy gt table with a nice message
-        gt(data.frame(Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters.")) %>%
+        gt(data.frame(
+          Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
+        )) %>%
           tab_options(table.width = pct(100)) # optional styling
       } else {
         # Format normally if there is data
         Formatting_04_table_total(filtered_data)
       }
-    } else { ## If SelectLevel04 != Total
+    } else {
+      ## If SelectLevel04 != Total
 
       filtered_data <- PRV04_data %>%
         filter(
@@ -252,14 +325,24 @@ server <- function(input, output, session) {
           ssa_tier_1 == input$selectSSA1,
           level_of_learning == input$selectLevel04
         ) %>%
-        select(time_period, provider_name, number_of_matched_learners, spd_percent, emp_percent, learn_percent, no_dest_percent) %>%
+        select(
+          time_period,
+          provider_name,
+          number_of_matched_learners,
+          spd_percent,
+          emp_percent,
+          learn_percent,
+          no_dest_percent
+        ) %>%
         arrange(time_period) %>%
         group_by(provider_name, time_period)
 
       # Check if there's no data
       if (nrow(filtered_data) == 0) {
         # Create a dummy gt table with a nice message
-        gt(data.frame(Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters.")) %>%
+        gt(data.frame(
+          Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
+        )) %>%
           tab_options(table.width = pct(100)) # optional styling
       } else {
         # Format normally if there is data
@@ -267,7 +350,6 @@ server <- function(input, output, session) {
       }
     }
   })
-
 
   # Link in the user guide panel back to the main panel -----------------------
   observeEvent(input$link_to_app_content_tab, {
@@ -311,8 +393,22 @@ server <- function(input, output, session) {
     paste0("Current selections: ", input$selectUKPRN)
   })
 
-  # Stop app ------------------------------------------------------------------
-  session$onSessionEnded(function() {
-    stopApp()
-  })
+  ## Footer links -------------------------------------------------------------
+  observeEvent(input$support, nav_select("pages", "support"))
+  observeEvent(
+    input$accessibility_statement,
+    nav_select("pages", "accessibility_statement")
+  )
+  observeEvent(
+    input$cookies_statement,
+    nav_select("pages", "cookies_statement")
+  )
+
+  ## Back links to main dashboard ---------------------------------------------
+  observeEvent(input$support_to_dashboard, nav_select("pages", "dashboard"))
+  observeEvent(input$cookies_to_dashboard, nav_select("pages", "dashboard"))
+  observeEvent(
+    input$accessibility_to_dashboard,
+    nav_select("pages", "dashboard")
+  )
 }
