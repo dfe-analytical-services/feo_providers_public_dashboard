@@ -1,6 +1,26 @@
 ## The intention of this is to re-arrange the data tables to be ready for viewing in the dashboard
 library(dplyr)
 
+
+clean_data <- function(data_set, data_set_name) {
+  if (grepl("prv01", data_set_name, ignore.case = TRUE)) {
+    message("Cleaning PRV 01")
+    data_set <- data_set |> clean_prv01()
+  } else if (grepl("prv02", data_set_name, ignore.case = TRUE)) {
+    message("Cleaning PRV 02")
+    data_set <- data_set |> clean_prv02()
+  } else if (grepl("prv03", data_set_name, ignore.case = TRUE)) {
+    message("Cleaning PRV 03")
+    data_set <- data_set |> clean_prv03()
+  } else if (grepl("prv04", data_set_name, ignore.case = TRUE)) {
+    message("Cleaning PRV 04")
+    data_set <- data_set |> clean_prv04()
+  } else {
+    stop(paste0("Could not identify data set from name: ", data_set_name))
+  }
+  data_set
+}
+
 ## PRV01 data
 clean_prv01 <- function(PRV01_data) {
   PRV01_data %>%

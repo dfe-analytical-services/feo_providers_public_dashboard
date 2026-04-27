@@ -1,0 +1,43 @@
+/* dropdowns CSS ----------------------------------------------------------- */
+.selectize-input {
+    font-family: GDS Transport, arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 1.1875rem;
+    line-height: 1.25;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 5px;
+    border: 2px solid;
+    border-color: var(--govuk-input-border-colour, #0b0c0c);
+    color: var(--govuk-text-colour, #0b0c0c);
+    background-color: #fff
+}
+
+.selectize-input:hover,
+.selectize-input:active,
+.selectize-input:focus {
+  box-shadow: inset 0 -0.188rem 0 0 #1d70b8;
+}
+
+
+/* Change focus border color to yellow */
+.selectize-input.focus {
+    outline: 3px solid;
+    outline-color: var(--govuk-focus-colour, #fd0);
+    outline-offset: 0;
+    border-color: var(--govuk-input-border-colour, #0b0c0c);
+    box-shadow: inset 0 0 0 2px var(--govuk-input-border-colour, #0b0c0c)
+}
+
+
+/* Change focus color to bright yellow */
+.selectize-dropdown-content .option:hover,
+.selectize-dropdown-content .option:focus,
+.selectize-dropdown-content .option.active {
+    background-color: #fd0 !important;
+    color: black !important;
+}
+
+

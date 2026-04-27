@@ -15,14 +15,13 @@ Headline_stats_panel <- function() {
             id = "div_a",
             # User selection dropdowns ------------------------------------
             gov_row(
-              column(
-                width = 8,
-                shinyGovstyle::select_Input(
+              layout_column_wrap(
+                selectizeInput(
                   inputId = "selectUKPRN",
                   label = "Select a Provider",
-                  select_text = choices_UKPRNs,
-                  select_value = choices_UKPRNs
-                )
+                  choices_UKPRNs
+                ),
+                col_width = c(10)
               )
             )
           )
@@ -35,25 +34,20 @@ Headline_stats_panel <- function() {
             # 04 tab -------------------------------------------------
             tabPanel(
               "Sector Subject Area",
-              fluidRow(
+              gov_row(
                 br(),
-                column(
-                  width = 6,
-                  shinyGovstyle::select_Input(
+                layout_column_wrap(
+                  selectizeInput(
                     inputId = "selectSSA1",
                     label = "Select a Sector Subject Area (Tier 1):",
-                    select_text = choices_SSA1,
-                    select_value = choices_SSA1
-                  )
-                ),
-                column(
-                  width = 6,
-                  shinyGovstyle::select_Input(
+                    choices_SSA1
+                  ),
+                  selectizeInput(
                     inputId = "selectLevel04",
                     label = "Select a Level/provision type:",
-                    select_text = choices_Levels04,
-                    select_value = choices_Levels04
-                  )
+                    choices_Levels04
+                  ),
+                  col_widths = c(6, 6)
                 ),
                 br(),
                 column(
@@ -90,30 +84,27 @@ Headline_stats_panel <- function() {
                 br(),
                 column(
                   width = 6,
-                  shinyGovstyle::select_Input(
+                  selectizeInput(
                     inputId = "selectAgeGroup02",
                     label = "Select age group:",
-                    select_text = choices_AgeGroup02,
-                    select_value = choices_AgeGroup02
+                    choices_AgeGroup02
                   )
                 ),
                 column(
                   width = 6,
-                  shinyGovstyle::select_Input(
+                  selectizeInput(
                     inputId = "selectLevel02",
                     label = "Select Level/provision type:",
-                    select_text = choices_Levels02,
-                    select_value = choices_Levels02
+                    choices_Levels02
                   )
                 ),
                 br(),
                 column(
                   width = 6,
-                  shinyGovstyle::select_Input(
+                  selectizeInput(
                     inputId = "selectLLDD",
                     label = "Select learning difficulties group:",
-                    select_text = choices_LLDD,
-                    select_value = choices_LLDD
+                    choices_LLDD
                   )
                 ),
                 br(),
@@ -148,11 +139,10 @@ Headline_stats_panel <- function() {
                 br(),
                 column(
                   width = 4,
-                  shinyGovstyle::select_Input(
+                  selectizeInput(
                     inputId = "selectProvision01",
                     label = "Select a provision type:",
-                    select_text = choices_Provision01,
-                    select_value = choices_Provision01
+                    choices_Provision01
                   )
                 ),
                 column(
@@ -186,20 +176,18 @@ Headline_stats_panel <- function() {
                 br(),
                 column(
                   width = 4,
-                  shinyGovstyle::select_Input(
+                  selectizeInput(
                     inputId = "selectProvision03",
                     label = "Select a provision type:",
-                    select_text = choices_Provision03,
-                    select_value = choices_Provision03
+                    choices_Provision03
                   )
                 ),
                 column(
                   width = 4,
-                  shinyGovstyle::select_Input(
+                  selectizeInput(
                     inputId = "selectAgeGroup03",
                     label = "Select age group:",
-                    select_text = choices_AgeGroup03,
-                    select_value = choices_AgeGroup03
+                    choices_AgeGroup03
                   )
                 ),
                 column(

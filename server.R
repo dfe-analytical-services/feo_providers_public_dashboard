@@ -102,6 +102,51 @@ server <- function(input, output, session) {
     google_analytics_key = google_analytics_key
   )
 
+  observeEvent(
+    input$selectUKPRN,
+    {
+      choices <- c(
+        "Total",
+        choices_SSA1_map |>
+          dplyr::filter(
+            provider_name == input$selectUKPRN,
+            ssa_tier_1 != "Total"
+          ) |>
+          dplyr::pull(ssa_tier_1)
+      )
+      selected <- ifelse(input$selectSSA1 %in% choices, input$selectSSA1, "Total")
+      updateSelectInput(
+        session,
+        "selectSSA1",
+        choices = choices,
+        selected = selected
+      )
+    }
+  )
+
+  observeEvent(
+    input$selectUKPRN,
+    {
+      choices <- c(
+        "Total",
+        choices_SSA1_map |>
+          dplyr::filter(
+            provider_name == input$selectUKPRN,
+            ssa_tier_1 != "Total"
+          ) |>
+          dplyr::pull(ssa_tier_1)
+      )
+      selected <- ifelse(input$selectSSA1 %in% choices, input$selectSSA1, "Total")
+      updateSelectizeInput(
+        session,
+        "selectSSA1",
+        choices = choices,
+        selected = selected
+      )
+    }
+  )
+
+
   output$table_01 <- render_gt({
     # Filter your data
     filtered_data <- PRV01_data %>%
