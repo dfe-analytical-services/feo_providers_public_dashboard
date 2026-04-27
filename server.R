@@ -114,7 +114,11 @@ server <- function(input, output, session) {
           ) |>
           dplyr::pull(ssa_tier_1)
       )
-      selected <- ifelse(input$selectSSA1 %in% choices, input$selectSSA1, "Total")
+      selected <- ifelse(
+        input$selectSSA1 %in% choices,
+        input$selectSSA1,
+        "Total"
+      )
       updateSelectInput(
         session,
         "selectSSA1",
@@ -136,7 +140,11 @@ server <- function(input, output, session) {
           ) |>
           dplyr::pull(ssa_tier_1)
       )
-      selected <- ifelse(input$selectSSA1 %in% choices, input$selectSSA1, "Total")
+      selected <- ifelse(
+        input$selectSSA1 %in% choices,
+        input$selectSSA1,
+        "Total"
+      )
       updateSelectizeInput(
         session,
         "selectSSA1",
@@ -145,7 +153,6 @@ server <- function(input, output, session) {
       )
     }
   )
-
 
   output$table_01 <- render_gt({
     # Filter your data

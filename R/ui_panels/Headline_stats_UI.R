@@ -52,7 +52,11 @@ Headline_stats_panel <- function() {
                 br(),
                 column(
                   width = 12,
-                  heading_text("Sector Subject Area data", level = 2, size = "m"),
+                  heading_text(
+                    "Sector Subject Area data",
+                    level = 2,
+                    size = "m"
+                  ),
                   fluidRow(
                     column(
                       width = 12,
@@ -62,9 +66,13 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  gov_text("Note: Education and Training relates to classroom based provision that is not
-                            either community/tailored learning, an apprenticeship, or a traineeship."),
-                  gov_text("All suppressed numbers are represented by 'c' where sample sizes are too low."),
+                  gov_text(
+                    "Note: Education and Training relates to classroom based provision that is not
+                            either community/tailored learning, an apprenticeship, or a traineeship."
+                  ),
+                  gov_text(
+                    "All suppressed numbers are represented by 'c' where sample sizes are too low."
+                  ),
                 ),
                 column(
                   width = 12,
@@ -111,7 +119,11 @@ Headline_stats_panel <- function() {
                 br(),
                 column(
                   width = 12,
-                  heading_text("Demographics table data", level = 2, size = "m"),
+                  heading_text(
+                    "Demographics table data",
+                    level = 2,
+                    size = "m"
+                  ),
                   fluidRow(
                     column(
                       width = 12,
@@ -121,7 +133,9 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  gov_text("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
+                  gov_text(
+                    "Note: All suppressed numbers are represented by 'c' where sample sizes are too low."
+                  ),
                 ),
                 column(
                   width = 12,
@@ -149,7 +163,11 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  heading_text("Benefit learners table data", level = 2, size = "m"),
+                  heading_text(
+                    "Benefit learners table data",
+                    level = 2,
+                    size = "m"
+                  ),
                   fluidRow(
                     column(
                       width = 12,
@@ -159,7 +177,9 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  gov_text("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
+                  gov_text(
+                    "Note: All suppressed numbers are represented by 'c' where sample sizes are too low."
+                  ),
                 ),
                 column(
                   width = 12,
@@ -195,7 +215,11 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  heading_text("Community Learners data", level = 2, size = "m"),
+                  heading_text(
+                    "Community Learners data",
+                    level = 2,
+                    size = "m"
+                  ),
                   fluidRow(
                     column(
                       width = 12,
@@ -205,7 +229,9 @@ Headline_stats_panel <- function() {
                 ),
                 column(
                   width = 12,
-                  gov_text("Note: All suppressed numbers are represented by 'c' where sample sizes are too low."),
+                  gov_text(
+                    "Note: All suppressed numbers are represented by 'c' where sample sizes are too low."
+                  ),
                 ),
                 column(
                   width = 12,

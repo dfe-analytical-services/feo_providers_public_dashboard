@@ -1,6 +1,5 @@
 ## suppress small sample sizes
 
-
 suppressProvProgression <- function(x) {
   # Check x is a dataframe, otherwise return error
   if ((!is.data.frame(x)) || NROW(x) == 0) {
@@ -31,11 +30,17 @@ suppressProvProgression <- function(x) {
   finalCols <- c(frontNumCols, percentColumns)
 
   # Round the number of learners and number of matched learner columns to nearest 10
-  x[x[, firstNumCol] != -9, c(firstNumCol)] <- round(x[x[, firstNumCol] != -9, c(firstNumCol)], -1)
+  x[x[, firstNumCol] != -9, c(firstNumCol)] <- round(
+    x[x[, firstNumCol] != -9, c(firstNumCol)],
+    -1
+  )
 
   y <- x[, finalCols]
   firstMissingCol <- grep("number_of_matched_learners", colnames(y))
-  y[, firstMissingCol:NCOL(y)] <- sapply(y[, firstMissingCol:NCOL(y)], as.numeric)
+  y[, firstMissingCol:NCOL(y)] <- sapply(
+    y[, firstMissingCol:NCOL(y)],
+    as.numeric
+  )
 
   y[, firstMissingCol:NCOL(y)][is.na(y[, firstMissingCol:NCOL(y)])] <- "z"
   # y[is.na(y[firstMissingCol:NCOL(y)]),firstMissingCol:NCOL(y)] <- '.'

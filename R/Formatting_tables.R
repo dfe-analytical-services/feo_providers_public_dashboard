@@ -2,11 +2,13 @@
 Formatting_01_table <- function(table_input) {
   formatted_table <- table_input %>%
     gt() %>%
-    fmt( ## This is a special function to only format the numbers as % and leave the 'c's as is
+    fmt(
+      ## This is a special function to only format the numbers as % and leave the 'c's as is
       columns = c(spd_percent, emp_percent, learn_percent, no_dest_percent),
       fns = function(x) {
         case_when(
-          grepl("^-?\\d+(\\.\\d+)?$", x) ~ scales::percent(as.numeric(x), accuracy = 1),
+          grepl("^-?\\d+(\\.\\d+)?$", x) ~
+            scales::percent(as.numeric(x), accuracy = 1),
           TRUE ~ x # Keep non-numeric values unchanged
         )
       }
@@ -15,7 +17,8 @@ Formatting_01_table <- function(table_input) {
       columns = c(number_of_matched_learners),
       fns = function(x) {
         case_when(
-          grepl("^-?\\d+(\\.\\d+)?$", x) ~ scales::number(as.numeric(x), big.mark = ","),
+          grepl("^-?\\d+(\\.\\d+)?$", x) ~
+            scales::number(as.numeric(x), big.mark = ","),
           TRUE ~ x # Keep non-numeric values unchanged
         )
       }
@@ -55,7 +58,6 @@ Formatting_01_table <- function(table_input) {
       row.striping.background_color = "#f3f2f1" # GOV.UK light grey for striped rows
     )
 
-
   return(formatted_table)
 }
 
@@ -64,11 +66,13 @@ Formatting_01_table <- function(table_input) {
 Formatting_02_table <- function(table_input) {
   formatted_table <- table_input %>%
     gt() %>%
-    fmt( ## This is a special function to only format the numbers as % and leave the 'c's as is
+    fmt(
+      ## This is a special function to only format the numbers as % and leave the 'c's as is
       columns = c(spd_percent, emp_percent, learn_percent, no_dest_percent),
       fns = function(x) {
         case_when(
-          grepl("^-?\\d+(\\.\\d+)?$", x) ~ scales::percent(as.numeric(x), accuracy = 1),
+          grepl("^-?\\d+(\\.\\d+)?$", x) ~
+            scales::percent(as.numeric(x), accuracy = 1),
           TRUE ~ x # Keep non-numeric values unchanged
         )
       }
@@ -77,7 +81,8 @@ Formatting_02_table <- function(table_input) {
       columns = c(number_of_matched_learners),
       fns = function(x) {
         case_when(
-          grepl("^-?\\d+(\\.\\d+)?$", x) ~ scales::number(as.numeric(x), big.mark = ","),
+          grepl("^-?\\d+(\\.\\d+)?$", x) ~
+            scales::number(as.numeric(x), big.mark = ","),
           TRUE ~ x # Keep non-numeric values unchanged
         )
       }
@@ -117,7 +122,6 @@ Formatting_02_table <- function(table_input) {
       row.striping.background_color = "#f3f2f1" # GOV.UK light grey for striped rows
     )
 
-
   return(formatted_table)
 }
 
@@ -126,11 +130,13 @@ Formatting_02_table <- function(table_input) {
 Formatting_03_table <- function(table_input) {
   formatted_table <- table_input %>%
     gt() %>%
-    fmt( ## This is a special function to only format the numbers as % and leave the 'c's as is
+    fmt(
+      ## This is a special function to only format the numbers as % and leave the 'c's as is
       columns = c(spd_percent, emp_percent, learn_percent, no_dest_percent),
       fns = function(x) {
         case_when(
-          grepl("^-?\\d+(\\.\\d+)?$", x) ~ scales::percent(as.numeric(x), accuracy = 1),
+          grepl("^-?\\d+(\\.\\d+)?$", x) ~
+            scales::percent(as.numeric(x), accuracy = 1),
           TRUE ~ x # Keep non-numeric values unchanged
         )
       }
@@ -139,7 +145,8 @@ Formatting_03_table <- function(table_input) {
       columns = c(number_of_matched_learners),
       fns = function(x) {
         case_when(
-          grepl("^-?\\d+(\\.\\d+)?$", x) ~ scales::number(as.numeric(x), big.mark = ","),
+          grepl("^-?\\d+(\\.\\d+)?$", x) ~
+            scales::number(as.numeric(x), big.mark = ","),
           TRUE ~ x # Keep non-numeric values unchanged
         )
       }
@@ -179,7 +186,6 @@ Formatting_03_table <- function(table_input) {
       row.striping.background_color = "#f3f2f1" # GOV.UK light grey for striped rows
     )
 
-
   return(formatted_table)
 }
 
@@ -191,20 +197,24 @@ Formatting_04_table <- function(table_input) {
     #   columns = c(spd_percent, emp_percent, learn_percent, no_dest_percent),
     #   decimals = 0
     # ) %>%
-    fmt( ## This is a special function to only format the numbers as % and leave the 'c's as is
+    fmt(
+      ## This is a special function to only format the numbers as % and leave the 'c's as is
       columns = c(spd_percent, emp_percent, learn_percent, no_dest_percent),
       fns = function(x) {
         case_when(
-          grepl("^-?\\d+(\\.\\d+)?$", x) ~ scales::percent(as.numeric(x), accuracy = 1),
+          grepl("^-?\\d+(\\.\\d+)?$", x) ~
+            scales::percent(as.numeric(x), accuracy = 1),
           TRUE ~ x # Keep non-numeric values unchanged
         )
       }
     ) %>%
     fmt(
       columns = c(number_of_matched_learners),
-      fns = function(x) { ## This is a special function to only format the numbers as % and leave the 'c's as is
+      fns = function(x) {
+        ## This is a special function to only format the numbers as % and leave the 'c's as is
         case_when(
-          grepl("^-?\\d+(\\.\\d+)?$", x) ~ scales::number(as.numeric(x), big.mark = ","),
+          grepl("^-?\\d+(\\.\\d+)?$", x) ~
+            scales::number(as.numeric(x), big.mark = ","),
           TRUE ~ x # Keep non-numeric values unchanged
         )
       }
@@ -247,7 +257,6 @@ Formatting_04_table <- function(table_input) {
       row.striping.background_color = "#f3f2f1" # GOV.UK light grey for striped rows
     )
 
-
   return(formatted_table)
 }
 
@@ -260,11 +269,13 @@ Formatting_04_table_total <- function(table_input) {
     #   columns = c(spd_percent, emp_percent, learn_percent, no_dest_percent),
     #   decimals = 0
     # ) %>%
-    fmt( ## This is a special function to only format the numbers as % and leave the 'c's as is
+    fmt(
+      ## This is a special function to only format the numbers as % and leave the 'c's as is
       columns = c(spd_percent, emp_percent, learn_percent, no_dest_percent),
       fns = function(x) {
         case_when(
-          grepl("^-?\\d+(\\.\\d+)?$", x) ~ scales::percent(as.numeric(x), accuracy = 1),
+          grepl("^-?\\d+(\\.\\d+)?$", x) ~
+            scales::percent(as.numeric(x), accuracy = 1),
           TRUE ~ x # Keep non-numeric values unchanged
         )
       }
@@ -273,7 +284,8 @@ Formatting_04_table_total <- function(table_input) {
       columns = c(number_of_matched_learners),
       fns = function(x) {
         case_when(
-          grepl("^-?\\d+(\\.\\d+)?$", x) ~ scales::number(as.numeric(x), big.mark = ","),
+          grepl("^-?\\d+(\\.\\d+)?$", x) ~
+            scales::number(as.numeric(x), big.mark = ","),
           TRUE ~ x # Keep non-numeric values unchanged
         )
       }
@@ -312,7 +324,6 @@ Formatting_04_table_total <- function(table_input) {
       row.striping.include_table_body = TRUE,
       row.striping.background_color = "#f3f2f1" # GOV.UK light grey for striped rows
     )
-
 
   return(formatted_table)
 }

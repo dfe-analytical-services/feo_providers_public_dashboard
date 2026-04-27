@@ -15,7 +15,10 @@ source_ees_data_files <- function() {
   for (data_set_name in names(source_files)) {
     local_data_file <- paste0("data/", data_set_name, ".rds")
     if (!file.exists(local_data_file)) {
-      message(local_data_file, " not found. Now downloading from EES publication.")
+      message(
+        local_data_file,
+        " not found. Now downloading from EES publication."
+      )
       data_set <- read.csv(source_files[[data_set_name]])
       cleaned_data_set <- data_set |>
         clean_data(data_set_name)

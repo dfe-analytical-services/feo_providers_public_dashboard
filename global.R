@@ -67,7 +67,6 @@ lapply(list.files("R/standard_panels/", full.names = TRUE), source)
 
 # Set global variables --------------------------------------------------------
 
-
 site_title <- "Further education outcomes provider tool" # name of app
 parent_pub_name <- "Further Education Outcomes" # name of source publication
 parent_publication <- # link to source publication
@@ -75,21 +74,6 @@ parent_publication <- # link to source publication
 
 # Set the URLs that the site will be published to
 site_primary <- "https://department-for-education.shinyapps.io/further-education-provider-outcomes/"
-
-# This function is needed for the Shiny App
-expandable <- function(input_id, label, contents) {
-  gov_details <- shiny::tags$details(
-    class = "govuk-details", id = input_id,
-    shiny::tags$summary(
-      class = "govuk-details__summary",
-      shiny::tags$span(
-        class = "govuk-details__summary-text",
-        label
-      )
-    ),
-    shiny::tags$div(contents)
-  )
-}
 
 # Combine URLs into list for disconnect function
 # We can add further mirrors where necessary. Each one can generally handle
@@ -124,17 +108,29 @@ choices_SSA1 <- c("Total", choices_SSA1[choices_SSA1 != "Total"]) ## Set Total t
 
 # List of Provision types
 choices_Provision01 <- sort(unique(PRV01_data$provision))
-choices_Provision01 <- c("Total", choices_Provision01[choices_Provision01 != "Total"]) ## Set Total to defaul, front position
+choices_Provision01 <- c(
+  "Total",
+  choices_Provision01[choices_Provision01 != "Total"]
+) ## Set Total to defaul, front position
 
 choices_Provision03 <- sort(unique(PRV03_data$provision))
-choices_Provision03 <- c("Total", choices_Provision03[choices_Provision03 != "Total"]) ## Set Total to defaul, front position
+choices_Provision03 <- c(
+  "Total",
+  choices_Provision03[choices_Provision03 != "Total"]
+) ## Set Total to defaul, front position
 
 # List of Age Groups
 choices_AgeGroup02 <- sort(unique(PRV02_data$age_group))
-choices_AgeGroup02 <- c("Total", choices_AgeGroup02[choices_AgeGroup02 != "Total"]) ## Set Total to defaul, front position
+choices_AgeGroup02 <- c(
+  "Total",
+  choices_AgeGroup02[choices_AgeGroup02 != "Total"]
+) ## Set Total to defaul, front position
 
 choices_AgeGroup03 <- sort(unique(PRV03_data$age_group))
-choices_AgeGroup03 <- c("Total", choices_AgeGroup03[choices_AgeGroup03 != "Total"]) ## Set Total to defaul, front position
+choices_AgeGroup03 <- c(
+  "Total",
+  choices_AgeGroup03[choices_AgeGroup03 != "Total"]
+) ## Set Total to defaul, front position
 
 # List of Levels for PRV02
 choices_Levels02 <- sort(unique(PRV02_data$level_of_learning))

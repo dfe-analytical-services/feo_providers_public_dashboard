@@ -12,9 +12,13 @@ test_suppression <- function(PRV04_data) {
 
   # Convert numeric values properly while keeping character values as is
   df_clean <- df %>%
-    mutate(Value1 = ifelse(suppressWarnings(!is.na(as.numeric(Value1))),
-      as.numeric(Value1), Value1
-    ))
+    mutate(
+      Value1 = ifelse(
+        suppressWarnings(!is.na(as.numeric(Value1))),
+        as.numeric(Value1),
+        Value1
+      )
+    )
 
   # Create gt table with conditional formatting
   gt_table <- df_clean %>%
@@ -22,14 +26,15 @@ test_suppression <- function(PRV04_data) {
     fmt(
       columns = c(Value1, Value2),
       fns = function(x) {
-        ifelse(suppressWarnings(!is.na(as.numeric(x))),
-          scales::percent(as.numeric(x), accuracy = 0.1), x
+        ifelse(
+          suppressWarnings(!is.na(as.numeric(x))),
+          scales::percent(as.numeric(x), accuracy = 0.1),
+          x
         )
       }
     )
 
   gt_table
-
 
   x <- PRV04_data %>%
     filter(
@@ -37,10 +42,18 @@ test_suppression <- function(PRV04_data) {
       ssa_tier_1 == "Total",
       level_of_learning == "Total"
     ) %>%
-    select(time_period, provider_name, provision, number_of_matched_learners, spd_percent, emp_percent, learn_percent, no_dest_percent) %>%
+    select(
+      time_period,
+      provider_name,
+      provision,
+      number_of_matched_learners,
+      spd_percent,
+      emp_percent,
+      learn_percent,
+      no_dest_percent
+    ) %>%
     arrange(time_period, provision) %>%
     group_by(provider_name, time_period)
-
 
   # Create gt table with conditional formatting
   gt_table <- x %>%
@@ -48,8 +61,10 @@ test_suppression <- function(PRV04_data) {
     fmt(
       columns = c(spd_percent, no_dest_percent),
       fns = function(x) {
-        ifelse(suppressWarnings(!is.na(as.numeric(x))),
-          scales::percent(as.numeric(x), accuracy = 1), x
+        ifelse(
+          suppressWarnings(!is.na(as.numeric(x))),
+          scales::percent(as.numeric(x), accuracy = 1),
+          x
         )
       }
     )

@@ -29,27 +29,62 @@ clean_prv01 <- function(PRV01_data) {
       provider_type == "Total"
       ## cohort_selection == "Total"
     ) %>%
-    select(-time_identifier, -geographic_level, -country_code, -country_name) %>%
-    mutate(time_period = paste0(substring(time_period, 1, 4), "/", substring(time_period, 5, 6))) %>%
+    select(
+      -time_identifier,
+      -geographic_level,
+      -country_code,
+      -country_name
+    ) %>%
     mutate(
-      spd_percent = ifelse(spd_percent == "c", "c", as.character(as.numeric(spd_percent) / 100)),
-      emp_percent = ifelse(emp_percent == "c", "c", as.character(as.numeric(emp_percent) / 100)),
-      learn_percent = ifelse(learn_percent == "c", "c", as.character(as.numeric(learn_percent) / 100)),
-      no_dest_percent = ifelse(no_dest_percent == "c", "c", as.character(as.numeric(no_dest_percent) / 100))
+      time_period = paste0(
+        substring(time_period, 1, 4),
+        "/",
+        substring(time_period, 5, 6)
+      )
+    ) %>%
+    mutate(
+      spd_percent = ifelse(
+        spd_percent == "c",
+        "c",
+        as.character(as.numeric(spd_percent) / 100)
+      ),
+      emp_percent = ifelse(
+        emp_percent == "c",
+        "c",
+        as.character(as.numeric(emp_percent) / 100)
+      ),
+      learn_percent = ifelse(
+        learn_percent == "c",
+        "c",
+        as.character(as.numeric(learn_percent) / 100)
+      ),
+      no_dest_percent = ifelse(
+        no_dest_percent == "c",
+        "c",
+        as.character(as.numeric(no_dest_percent) / 100)
+      )
     ) %>%
     # suppressProvProgression() %>%
     mutate(
-      spd_percent = ifelse(suppressWarnings(!is.na(as.numeric(spd_percent))),
-        as.numeric(spd_percent), spd_percent
+      spd_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(spd_percent))),
+        as.numeric(spd_percent),
+        spd_percent
       ),
-      emp_percent = ifelse(suppressWarnings(!is.na(as.numeric(emp_percent))),
-        as.numeric(emp_percent), emp_percent
+      emp_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(emp_percent))),
+        as.numeric(emp_percent),
+        emp_percent
       ),
-      learn_percent = ifelse(suppressWarnings(!is.na(as.numeric(learn_percent))),
-        as.numeric(learn_percent), learn_percent
+      learn_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(learn_percent))),
+        as.numeric(learn_percent),
+        learn_percent
       ),
-      no_dest_percent = ifelse(suppressWarnings(!is.na(as.numeric(no_dest_percent))),
-        as.numeric(no_dest_percent), no_dest_percent
+      no_dest_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(no_dest_percent))),
+        as.numeric(no_dest_percent),
+        no_dest_percent
       )
     )
 }
@@ -61,28 +96,63 @@ clean_prv02 <- function(PRV02_data) {
       country_name == "England",
       provider_type == "Total"
     ) %>%
-    select(-time_identifier, -geographic_level, -country_code, -country_name) %>%
-    mutate(time_period = paste0(substring(time_period, 1, 4), "/", substring(time_period, 5, 6))) %>%
+    select(
+      -time_identifier,
+      -geographic_level,
+      -country_code,
+      -country_name
+    ) %>%
     mutate(
-      spd_percent = ifelse(spd_percent == "c", "c", as.character(as.numeric(spd_percent) / 100)),
-      emp_percent = ifelse(emp_percent == "c", "c", as.character(as.numeric(emp_percent) / 100)),
-      learn_percent = ifelse(learn_percent == "c", "c", as.character(as.numeric(learn_percent) / 100)),
-      no_dest_percent = ifelse(no_dest_percent == "c", "c", as.character(as.numeric(no_dest_percent) / 100))
+      time_period = paste0(
+        substring(time_period, 1, 4),
+        "/",
+        substring(time_period, 5, 6)
+      )
+    ) %>%
+    mutate(
+      spd_percent = ifelse(
+        spd_percent == "c",
+        "c",
+        as.character(as.numeric(spd_percent) / 100)
+      ),
+      emp_percent = ifelse(
+        emp_percent == "c",
+        "c",
+        as.character(as.numeric(emp_percent) / 100)
+      ),
+      learn_percent = ifelse(
+        learn_percent == "c",
+        "c",
+        as.character(as.numeric(learn_percent) / 100)
+      ),
+      no_dest_percent = ifelse(
+        no_dest_percent == "c",
+        "c",
+        as.character(as.numeric(no_dest_percent) / 100)
+      )
     ) %>%
     filter(!(age_group == "Total" & age_youth_adult != "Total")) %>% ## Remove these rows to avoid duplicate rows appearing in output tables when user select age_group = Total
     # suppressProvProgression() %>%
     mutate(
-      spd_percent = ifelse(suppressWarnings(!is.na(as.numeric(spd_percent))),
-        as.numeric(spd_percent), spd_percent
+      spd_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(spd_percent))),
+        as.numeric(spd_percent),
+        spd_percent
       ),
-      emp_percent = ifelse(suppressWarnings(!is.na(as.numeric(emp_percent))),
-        as.numeric(emp_percent), emp_percent
+      emp_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(emp_percent))),
+        as.numeric(emp_percent),
+        emp_percent
       ),
-      learn_percent = ifelse(suppressWarnings(!is.na(as.numeric(learn_percent))),
-        as.numeric(learn_percent), learn_percent
+      learn_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(learn_percent))),
+        as.numeric(learn_percent),
+        learn_percent
       ),
-      no_dest_percent = ifelse(suppressWarnings(!is.na(as.numeric(no_dest_percent))),
-        as.numeric(no_dest_percent), no_dest_percent
+      no_dest_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(no_dest_percent))),
+        as.numeric(no_dest_percent),
+        no_dest_percent
       )
     )
 }
@@ -92,27 +162,62 @@ clean_prv02 <- function(PRV02_data) {
 clean_prv03 <- function(PRV03_data) {
   PRV03_data %>%
     filter(country_name == "England") %>%
-    select(-time_identifier, -geographic_level, -country_code, -country_name) %>%
-    mutate(time_period = paste0(substring(time_period, 1, 4), "/", substring(time_period, 5, 6))) %>%
+    select(
+      -time_identifier,
+      -geographic_level,
+      -country_code,
+      -country_name
+    ) %>%
     mutate(
-      spd_percent = ifelse(spd_percent == "c", "c", as.character(as.numeric(spd_percent) / 100)),
-      emp_percent = ifelse(emp_percent == "c", "c", as.character(as.numeric(emp_percent) / 100)),
-      learn_percent = ifelse(learn_percent == "c", "c", as.character(as.numeric(learn_percent) / 100)),
-      no_dest_percent = ifelse(no_dest_percent == "c", "c", as.character(as.numeric(no_dest_percent) / 100))
+      time_period = paste0(
+        substring(time_period, 1, 4),
+        "/",
+        substring(time_period, 5, 6)
+      )
+    ) %>%
+    mutate(
+      spd_percent = ifelse(
+        spd_percent == "c",
+        "c",
+        as.character(as.numeric(spd_percent) / 100)
+      ),
+      emp_percent = ifelse(
+        emp_percent == "c",
+        "c",
+        as.character(as.numeric(emp_percent) / 100)
+      ),
+      learn_percent = ifelse(
+        learn_percent == "c",
+        "c",
+        as.character(as.numeric(learn_percent) / 100)
+      ),
+      no_dest_percent = ifelse(
+        no_dest_percent == "c",
+        "c",
+        as.character(as.numeric(no_dest_percent) / 100)
+      )
     ) %>%
     # suppressProvProgression() %>%
     mutate(
-      spd_percent = ifelse(suppressWarnings(!is.na(as.numeric(spd_percent))),
-        as.numeric(spd_percent), spd_percent
+      spd_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(spd_percent))),
+        as.numeric(spd_percent),
+        spd_percent
       ),
-      emp_percent = ifelse(suppressWarnings(!is.na(as.numeric(emp_percent))),
-        as.numeric(emp_percent), emp_percent
+      emp_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(emp_percent))),
+        as.numeric(emp_percent),
+        emp_percent
       ),
-      learn_percent = ifelse(suppressWarnings(!is.na(as.numeric(learn_percent))),
-        as.numeric(learn_percent), learn_percent
+      learn_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(learn_percent))),
+        as.numeric(learn_percent),
+        learn_percent
       ),
-      no_dest_percent = ifelse(suppressWarnings(!is.na(as.numeric(no_dest_percent))),
-        as.numeric(no_dest_percent), no_dest_percent
+      no_dest_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(no_dest_percent))),
+        as.numeric(no_dest_percent),
+        no_dest_percent
       )
     )
 }
@@ -124,31 +229,65 @@ clean_prv04 <- function(PRV04_data) {
       provider_type == "Total",
       ssa_tier_2 == "Total"
     ) %>%
-    select(-time_identifier, -geographic_level, -country_code, -country_name) %>%
-    mutate(time_period = paste0(substring(time_period, 1, 4), "/", substring(time_period, 5, 6))) %>%
+    select(
+      -time_identifier,
+      -geographic_level,
+      -country_code,
+      -country_name
+    ) %>%
     mutate(
-      spd_percent = ifelse(spd_percent == "c", "c", as.character(as.numeric(spd_percent) / 100)),
-      emp_percent = ifelse(emp_percent == "c", "c", as.character(as.numeric(emp_percent) / 100)),
-      learn_percent = ifelse(learn_percent == "c", "c", as.character(as.numeric(learn_percent) / 100)),
-      no_dest_percent = ifelse(no_dest_percent == "c", "c", as.character(as.numeric(no_dest_percent) / 100))
+      time_period = paste0(
+        substring(time_period, 1, 4),
+        "/",
+        substring(time_period, 5, 6)
+      )
+    ) %>%
+    mutate(
+      spd_percent = ifelse(
+        spd_percent == "c",
+        "c",
+        as.character(as.numeric(spd_percent) / 100)
+      ),
+      emp_percent = ifelse(
+        emp_percent == "c",
+        "c",
+        as.character(as.numeric(emp_percent) / 100)
+      ),
+      learn_percent = ifelse(
+        learn_percent == "c",
+        "c",
+        as.character(as.numeric(learn_percent) / 100)
+      ),
+      no_dest_percent = ifelse(
+        no_dest_percent == "c",
+        "c",
+        as.character(as.numeric(no_dest_percent) / 100)
+      )
     ) %>%
     # suppressProvProgression() %>%
     mutate(
-      spd_percent = ifelse(suppressWarnings(!is.na(as.numeric(spd_percent))),
-        as.numeric(spd_percent), spd_percent
+      spd_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(spd_percent))),
+        as.numeric(spd_percent),
+        spd_percent
       ),
-      emp_percent = ifelse(suppressWarnings(!is.na(as.numeric(emp_percent))),
-        as.numeric(emp_percent), emp_percent
+      emp_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(emp_percent))),
+        as.numeric(emp_percent),
+        emp_percent
       ),
-      learn_percent = ifelse(suppressWarnings(!is.na(as.numeric(learn_percent))),
-        as.numeric(learn_percent), learn_percent
+      learn_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(learn_percent))),
+        as.numeric(learn_percent),
+        learn_percent
       ),
-      no_dest_percent = ifelse(suppressWarnings(!is.na(as.numeric(no_dest_percent))),
-        as.numeric(no_dest_percent), no_dest_percent
+      no_dest_percent = ifelse(
+        suppressWarnings(!is.na(as.numeric(no_dest_percent))),
+        as.numeric(no_dest_percent),
+        no_dest_percent
       )
     )
 }
-
 
 ## Leave for a future date to look at National tables
 

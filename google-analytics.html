@@ -12,37 +12,31 @@ gtag('consent', 'default', {
 </script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX'></script>
+  <script async src='https://www.googletagmanager.com/gtag/js?id=G-W7903TYHRV'></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
 
     gtag('js', new Date());
 
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-W7903TYHRV');
 
 /*
 The custom trackers below can be tailored to match the inputs used in your
 dashboard.
 */
 
-  $(document).on('change', 'select#selectPhase', function(e) {
-    gtag('event', 'select phase', {'event_category' : 'choose Phase',
-    'event_label' : document.querySelector('select#selectPhase').value
-    });
-  });
-
-  $(document).on('change', 'select#selectArea', function(e) {
-    gtag('event', 'select area', {'event_category' : 'choose Area',
-    'event_label' : document.querySelector('select#selectArea').value
-    });
-  });
-
   $(document).on('click', 'ul#navlistPanel', function(e) {
     gtag('event', 'navlistPanel', {'event_category' : 'navbar click',
     'event_label' : document.querySelector(
     'ul#navlistPanel > li.active > a'
     ).getAttribute('data-value')
+    });
+  });
+
+  $(document).on('change', 'select#selectUKPRN', function(e) {
+    gtag('event', 'select provider', {'event_category' : 'choose provider',
+    'event_label' : document.querySelector('select#selectUKPRN').value
     });
   });
 
@@ -54,9 +48,29 @@ dashboard.
     });
   });
 
+  $(document).on('change', 'select#selectSSA1', function(e) {
+    gtag('event', 'select subject area 1', {'event_category' : 'choose subject area',
+    'event_label' : document.querySelector('select#selectSSA1').value
+    });
+  });
 
-  $(document).on('click', 'a#download_data', function(e) {
-    gtag('event', 'Download button', {'event_category' : 'Download button click'
+  $(document).on('click', 'a#download_data_01', function(e) {
+    gtag('event', 'Download button PRV01', {'event_category' : 'Download button'
+    });
+  });
+
+  $(document).on('click', 'a#download_data_02', function(e) {
+    gtag('event', 'Download button PRV02', {'event_category' : 'Download button'
+    });
+  });
+
+  $(document).on('click', 'a#download_data_03', function(e) {
+    gtag('event', 'Download button PRV03', {'event_category' : 'Download button'
+    });
+  });
+
+    $(document).on('click', 'a#download_data_04', function(e) {
+    gtag('event', 'Download button PRV04', {'event_category' : 'Download button'
     });
   });
 
