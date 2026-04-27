@@ -39,11 +39,10 @@ Headline_stats_panel <- function() {
                 br(),
                 column(
                   width = 6,
-                  shinyGovstyle::select_Input(
+                  selectInput(
                     inputId = "selectSSA1",
                     label = "Select a Sector Subject Area (Tier 1):",
-                    select_text = choices_SSA1,
-                    select_value = choices_SSA1
+                    choices_SSA1
                   )
                 ),
                 column(

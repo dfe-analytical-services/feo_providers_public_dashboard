@@ -57,7 +57,7 @@ if (FALSE) {
 # to the server file or to hold custom functions to keep the main files shorter
 #
 # It's best to do this here instead of the server file, to improve performance.
-lapply(list.files("R/", pattern = "*.R", full.names = TRUE), source)
+lapply(list.files("R/", full.names = TRUE, pattern = ".R"), source)
 
 # Source all files in the ui_panels folder
 lapply(list.files("R/ui_panels/", full.names = TRUE), source)
@@ -104,11 +104,22 @@ google_analytics_key <- "W7903TYHRV"
 # Enable bookmarking so that input choices are shown in the url ---------------
 enableBookmarking("url")
 
+source_ees_data_files()
+data_files <- read_data_files()
+PRV01_data <- data_files$prv01
+PRV02_data <- data_files$prv02
+PRV03_data <- data_files$prv03
+PRV04_data <- data_files$prv04
+
 # List of UKPRNs
 choices_UKPRNs <- sort(unique(PRV01_data$provider_name)) # All PRV0 files should have the same list of UKPRNs, so just use 01 here.
 
 # List of SSA1s
-choices_SSA1 <- sort(unique(PRV04_data$ssa_tier_1))
+choices_SSA1_map <- PRV04_data |>
+  dplyr::select(provider_name, ssa_tier_1) |>
+  dplyr::distinct() |>
+  dplyr::arrange(provider_name, ssa_tier_1)
+choices_SSA1 <- unique(choices_SSA1_map$ssa_tier_1)
 choices_SSA1 <- c("Total", choices_SSA1[choices_SSA1 != "Total"]) ## Set Total to defaul, front position
 
 # List of Provision types
