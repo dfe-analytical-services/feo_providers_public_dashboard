@@ -72,7 +72,8 @@ Headline_stats_panel <- function() {
                   download_button(
                     outputId = "download_data_04",
                     button_label = "Download underlying data",
-                    file_type = "CSV"
+                    file_type = "CSV",
+                    file_size = "139 MB"
                   )
                 )
               ) # closes fluidRow
@@ -127,7 +128,8 @@ Headline_stats_panel <- function() {
                   download_button(
                     outputId = "download_data_02",
                     button_label = "Download underlying data",
-                    file_type = "CSV"
+                    file_type = "CSV",
+                    file_size = "47 MB"
                   )
                 )
               ) # closes fluidRow
@@ -164,7 +166,8 @@ Headline_stats_panel <- function() {
                   download_button(
                     outputId = "download_data_01",
                     button_label = "Download underlying data",
-                    file_type = "CSV"
+                    file_type = "CSV",
+                    file_size = "14 MB"
                   )
                 )
               ) # closes fluidRow
@@ -209,7 +212,8 @@ Headline_stats_panel <- function() {
                   download_button(
                     outputId = "download_data_03",
                     button_label = "Download underlying data",
-                    file_type = "CSV"
+                    file_type = "CSV",
+                    file_size = "18 MB"
                   )
                 )
               ) # closes fluidRow
