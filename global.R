@@ -67,12 +67,6 @@ lapply(list.files("R/standard_panels/", full.names = TRUE), source)
 
 # Set global variables --------------------------------------------------------
 
-# Read in data
-PRV01_data <- readRDS("data/PRV01_data_rds.rds") |> clean_prv01()
-PRV02_data <- readRDS("data/PRV02_data_rds.rds") |> clean_prv02()
-PRV03_data <- readRDS("data/PRV03_data_rds.rds") |> clean_prv03()
-PRV04_data <- readRDS("data/PRV04_data_rds.rds") |> clean_prv04()
-
 
 site_title <- "Further education outcomes provider tool" # name of app
 parent_pub_name <- "Further Education Outcomes" # name of source publication
