@@ -31,3 +31,6 @@ test_that("{shinytest2} recording: feo_providers_public_dashboard", {
   app$set_inputs(navlistPanel = "User guide")
   app$expect_values()
 })
+
+
+
