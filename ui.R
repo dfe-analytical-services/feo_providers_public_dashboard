@@ -83,7 +83,12 @@ ui <- function(input, output, session) {
       "beta",
       paste0(
         "This Dashboard is in beta phase and we are still reviewing performance
-        and reliability."
+        and reliability. Please provide your general thoughts and feedback via ",
+        external_link(
+          href = "https://forms.office.com/Pages/ResponsePage.aspx?id=yXfS-grGoU2187O4s0qC-YGh50J950tCoDMOhSQpw3BUMjVSWVNSVjg2VDBYVFVMQ01NVTA5RjBaMS4u",
+          link_text = "this form"
+        ),
+        "."
       )
     ),
     gov_main_layout(

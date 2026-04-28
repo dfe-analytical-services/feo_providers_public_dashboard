@@ -14,7 +14,7 @@ support_panel <- function() {
       repo_name = "https://github.com/dfe-analytical-services/feo_providers_public_dashboard",
       publication_name = "Further education outcomes",
       publication_slug = "further-education-outcomes",
-      form_url = "https://forms.office.com"
+      form_url = "https://forms.office.com/Pages/ResponsePage.aspx?id=yXfS-grGoU2187O4s0qC-YGh50J950tCoDMOhSQpw3BUMjVSWVNSVjg2VDBYVFVMQ01NVTA5RjBaMS4u"
     )
   )
 }
