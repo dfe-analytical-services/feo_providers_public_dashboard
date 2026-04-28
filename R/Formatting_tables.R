@@ -1,7 +1,7 @@
 ## This formats the 01 table
 Formatting_01_table <- function(table_input) {
   formatted_table <- table_input %>%
-    gt() %>%
+    gt(id = "prv01-gt") %>%
     fmt(
       ## This is a special function to only format the numbers as % and leave the 'c's as is
       columns = c(spd_percent, emp_percent, learn_percent, no_dest_percent),
@@ -65,7 +65,7 @@ Formatting_01_table <- function(table_input) {
 ## This formats the 02 table
 Formatting_02_table <- function(table_input) {
   formatted_table <- table_input %>%
-    gt() %>%
+    gt(id = "prv02-gt") %>%
     fmt(
       ## This is a special function to only format the numbers as % and leave the 'c's as is
       columns = c(spd_percent, emp_percent, learn_percent, no_dest_percent),
@@ -129,7 +129,7 @@ Formatting_02_table <- function(table_input) {
 ## This formats the 03 table
 Formatting_03_table <- function(table_input) {
   formatted_table <- table_input %>%
-    gt() %>%
+    gt(id = "prv03-gt") %>%
     fmt(
       ## This is a special function to only format the numbers as % and leave the 'c's as is
       columns = c(spd_percent, emp_percent, learn_percent, no_dest_percent),
@@ -192,7 +192,7 @@ Formatting_03_table <- function(table_input) {
 ## This formats the 04 table
 Formatting_04_table <- function(table_input) {
   formatted_table <- table_input %>%
-    gt() %>%
+    gt(id = "prv04-gt") %>%
     # fmt_percent(
     #   columns = c(spd_percent, emp_percent, learn_percent, no_dest_percent),
     #   decimals = 0
@@ -264,7 +264,7 @@ Formatting_04_table <- function(table_input) {
 ## This formats the 04 for TOTAL provision table
 Formatting_04_table_total <- function(table_input) {
   formatted_table <- table_input %>%
-    gt() %>%
+    gt(id = "prv04-total-gt") %>%
     # fmt_percent(
     #   columns = c(spd_percent, emp_percent, learn_percent, no_dest_percent),
     #   decimals = 0

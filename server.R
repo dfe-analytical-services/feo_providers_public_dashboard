@@ -177,9 +177,12 @@ server <- function(input, output, session) {
     # Check if there's no data
     if (nrow(filtered_data) == 0) {
       # Create a dummy gt table with a nice message
-      gt(data.frame(
-        Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
-      )) %>%
+      gt(
+        data.frame(
+          Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
+        ),
+        id = "prv01-gt"
+      ) %>%
         tab_options(table.width = pct(100)) # optional styling
     } else {
       # Format normally if there is data
@@ -215,9 +218,12 @@ server <- function(input, output, session) {
       # Check if there's no data
       if (nrow(filtered_data) == 0) {
         # Create a dummy gt table with a nice message
-        gt(data.frame(
-          Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
-        )) %>%
+        gt(
+          data.frame(
+            Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
+          ),
+          id = "prv02-gt"
+        ) %>%
           tab_options(table.width = pct(100)) # optional styling
       } else {
         # Format normally if there is data
@@ -249,9 +255,12 @@ server <- function(input, output, session) {
       # Check if there's no data
       if (nrow(filtered_data) == 0) {
         # Create a dummy gt table with a nice message
-        gt(data.frame(
-          Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
-        )) %>%
+        gt(
+          data.frame(
+            Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
+          ),
+          id = "prv02-gt"
+        ) %>%
           tab_options(table.width = pct(100)) # optional styling
       } else {
         # Format normally if there is data
@@ -284,9 +293,12 @@ server <- function(input, output, session) {
     # Check if there's no data
     if (nrow(filtered_data) == 0) {
       # Create a dummy gt table with a nice message
-      gt(data.frame(
-        Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
-      )) %>%
+      gt(
+        data.frame(
+          Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
+        ),
+        id = "prv03-gt"
+      ) %>%
         tab_options(table.width = pct(100)) # optional styling
     } else {
       # Format normally if there is data
@@ -360,9 +372,12 @@ server <- function(input, output, session) {
       # Check if there's no data
       if (nrow(filtered_data) == 0) {
         # Create a dummy gt table with a nice message
-        gt(data.frame(
-          Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
-        )) %>%
+        gt(
+          data.frame(
+            Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
+          ),
+          id = "prv04-total-gt"
+        ) %>%
           tab_options(table.width = pct(100)) # optional styling
       } else {
         # Format normally if there is data
@@ -392,9 +407,12 @@ server <- function(input, output, session) {
       # Check if there's no data
       if (nrow(filtered_data) == 0) {
         # Create a dummy gt table with a nice message
-        gt(data.frame(
-          Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
-        )) %>%
+        gt(
+          data.frame(
+            Message = "⚠️ No matching data found, either due to combination of filters not being present in the data or insufficient sample sizes. Please adjust the filters."
+          ),
+          id = "prv04-gt"
+        ) %>%
           tab_options(table.width = pct(100)) # optional styling
       } else {
         # Format normally if there is data

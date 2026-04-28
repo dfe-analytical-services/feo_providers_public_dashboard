@@ -45,6 +45,7 @@ shhh(library(shinyalert))
 # them, saving on load time.
 if (FALSE) {
   shhh(library(shinytest2))
+  shhh(library(diffviewer))
   shhh(library(testthat))
   shhh(library(rsconnect))
   shhh(library(shinya11y))

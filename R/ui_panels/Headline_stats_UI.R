@@ -60,7 +60,7 @@ Headline_stats_panel <- function() {
                   fluidRow(
                     column(
                       width = 12,
-                      tableOutput("table_04")
+                      gt_output("table_04")
                     )
                   )
                 ),
@@ -127,7 +127,7 @@ Headline_stats_panel <- function() {
                   fluidRow(
                     column(
                       width = 12,
-                      tableOutput("table_02")
+                      gt_output("table_02")
                     )
                   )
                 ),
@@ -171,7 +171,7 @@ Headline_stats_panel <- function() {
                   fluidRow(
                     column(
                       width = 12,
-                      tableOutput("table_01")
+                      gt_output("table_01")
                     )
                   )
                 ),
@@ -223,7 +223,7 @@ Headline_stats_panel <- function() {
                   fluidRow(
                     column(
                       width = 12,
-                      tableOutput("table_03")
+                      gt_output("table_03")
                     )
                   )
                 ),
